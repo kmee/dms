@@ -25,7 +25,7 @@ class ResConfigSettings(models.TransientModel):
     def set_values(self):
         res = super(ResConfigSettings, self).set_values()
         param = self.env["ir.config_parameter"].sudo()
-        param.set_param("muk_web_utils.binary_max_size", self.documents_binary_max_size)
+        param.set_param("dms.binary_max_size", self.documents_binary_max_size)
         param.set_param("dms.forbidden_extensions", self.documents_forbidden_extensions)
         return res
 
@@ -35,7 +35,7 @@ class ResConfigSettings(models.TransientModel):
         params = self.env["ir.config_parameter"].sudo()
         res.update(
             documents_binary_max_size=int(
-                params.get_param("muk_web_utils.binary_max_size", default=25)
+                params.get_param("dms.binary_max_size", default=25)
             ),
             documents_forbidden_extensions=params.get_param(
                 "dms.forbidden_extensions", default=""

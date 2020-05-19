@@ -2,8 +2,8 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 {
-    "name": "DMS",
-    "summary": """Document Management System""",
+    "name": "Document Management System",
+    "summary": """Document Management System for Odoo""",
     "version": "13.0.1.0.0",
     "category": "Document Management",
     "license": "LGPL-3",

@@ -37,7 +37,7 @@ class DmsDirectory(models.Model):
 
     name = fields.Char(string="Name", required=True, index=True)
 
-    parent_path = fields.Char()
+    parent_path = fields.Char(index=True)
     is_root_directory = fields.Boolean(
         string="Is Root Directory",
         default=False,
@@ -149,10 +149,20 @@ class DmsDirectory(models.Model):
     )
 
     count_directories = fields.Integer(
+        compute="_compute_count_directories", string="Count Subdirectories Title"
+    )
+
+    count_files = fields.Integer(
+        compute="_compute_count_files", string="Count Files Title"
+    )
+
+    count_directories_title = fields.Char(
         compute="_compute_count_directories", string="Count Subdirectories"
     )
 
-    count_files = fields.Integer(compute="_compute_count_files", string="Count Files")
+    count_files_title = fields.Char(
+        compute="_compute_count_files", string="Count Files"
+    )
 
     count_elements = fields.Integer(
         compute="_compute_count_elements", string="Count Elements"
@@ -189,9 +199,12 @@ class DmsDirectory(models.Model):
                 """,
     )
 
-    # ----------------------------------------------------------
-    # Functions
-    # ----------------------------------------------------------
+    @api.depends("name", "complete_name")
+    def _compute_display_name(self):
+        if not self.env.context.get("directory_short_name", False):
+            return super()._compute_display_name()
+        for record in self:
+            record.display_name = record.name
 
     def toggle_starred(self):
         updates = defaultdict(set)
@@ -235,10 +248,6 @@ class DmsDirectory(models.Model):
             return [("user_star_ids", "in", [self.env.uid])]
         return [("user_star_ids", "not in", [self.env.uid])]
 
-    # ----------------------------------------------------------
-    # Read
-    # ----------------------------------------------------------
-
     @api.depends("name", "parent_id.complete_name")
     def _compute_complete_name(self):
         for category in self:
@@ -265,12 +274,16 @@ class DmsDirectory(models.Model):
     @api.depends("child_directory_ids")
     def _compute_count_directories(self):
         for record in self:
-            record.count_directories = len(record.child_directory_ids)
+            directories = len(record.child_directory_ids)
+            record.count_directories = directories
+            record.count_directories_title = _("%s Subdirectories") % directories
 
     @api.depends("file_ids")
     def _compute_count_files(self):
         for record in self:
-            record.count_files = len(record.file_ids)
+            files = len(record.file_ids)
+            record.count_files = files
+            record.count_files_title = _("%s Files") % files
 
     @api.depends("child_directory_ids", "file_ids")
     def _compute_count_elements(self):
@@ -423,7 +436,6 @@ class DmsDirectory(models.Model):
         not_starred_records.write({"user_star_ids": [(4, self.env.uid)]})
         starred_records.write({"user_star_ids": [(3, self.env.uid)]})
 
-    @api.returns("self", lambda value: value.id)
     def copy(self, default=None):
         self.ensure_one()
         default = dict(default or [])

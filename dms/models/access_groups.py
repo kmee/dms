@@ -18,7 +18,7 @@ class DmsAccessGroups(models.Model):
     perm_create = fields.Boolean(string="Create Access")
     perm_write = fields.Boolean(string="Write Access")
     perm_unlink = fields.Boolean(string="Unlink Access")
-    directories = fields.Many2many(
+    directory_ids = fields.Many2many(
         comodel_name="dms.directory",
         relation="dms_directory_groups_rel",
         string="Directories",
@@ -31,10 +31,10 @@ class DmsAccessGroups(models.Model):
         compute="_compute_count_directories", string="Count Directories"
     )
 
-    @api.depends("directories")
+    @api.depends("directory_ids")
     def _compute_count_directories(self):
         for record in self:
-            record.count_directories = len(record.directories)
+            record.count_directories = len(record.directory_ids)
 
     @api.model
     def _add_magic_fields(self):
