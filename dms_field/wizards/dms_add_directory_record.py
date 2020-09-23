@@ -18,7 +18,7 @@ class DmsAddDirectory(models.TransientModel):
         self.ensure_one()
         record = self.env[self.storage_id.model_id.model].browse(self.res_id)
         already_created = self.env["dms.directory"].search(
-            [("name", "=", record.display_name)]
+            [("name", "=", record.display_name.replace('/', '-'))]
         )
         if already_created:
             return

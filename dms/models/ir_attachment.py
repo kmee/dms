@@ -47,7 +47,8 @@ class IrAttachment(models.Model):
 
                 if storage_id and storage_id.save_type == "attachment":
                     record_directory = self.env["dms.directory"].search(
-                        [("complete_name", "=", attachment_id.res_name)]
+                        [("complete_name", "=", attachment_id.res_name.replace(
+                            '/', '-'))]
                     )
                     if not record_directory:
                         record_directory = self._create_record_dir(
