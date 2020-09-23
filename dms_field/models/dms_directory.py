@@ -230,3 +230,10 @@ class DmsDirectory(models.Model):
         return self.search_read(
             domain=domain, fields=fields, offset=offset, limit=limit, order=order
         )
+
+    @api.model
+    def create(self, values):
+        if values.get('name'):
+            values['name'] = values['name'].replace('/', '-')
+        res = super(DmsDirectory, self).create(values)
+        return res
