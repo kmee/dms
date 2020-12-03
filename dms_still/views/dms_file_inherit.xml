@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 KMEE
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="dms_file_inherit_form_view">
+        <field name="name">dms.file.inherit.form (in dms_still)</field>
+        <field name="model">dms.file</field>
+        <field name="inherit_id" ref="dms.view_dms_file_form"/>
+        <field name="arch" type="xml">
+            <field name="tag_ids" position="after">
+
+                    <field name="related_linked_model" attrs="{'invisible': True}"/>
+                    <field name="related_model_ids"
+                           widget="many2many_tags"
+                           attrs="{'invisible':[('related_linked_model', 'not in', ['service_info', 'tot_videos', 'technical_doc'])]}"/>
+                    <field name="related_brand_ids"
+                            widget="many2many_tags"
+                            attrs="{'invisible':[('related_linked_model', 'not in', ['service_info', 'tot_videos', 'technical_doc'])]}"/>
+                    <field name="related_category_ids"
+                            widget="many2many_tags"
+                            attrs="{'invisible':[('related_linked_model', 'not in', ['service_info', 'tot_videos', 'technical_doc'])]}"/>
+                    <field name="related_error_ids"
+                           widget="many2many_tags"
+                        attrs="{'invisible':[('related_linked_model', 'not in', ['service_info', 'tot_videos'])]}"/>
+                    <field name="related_query_ids"
+                           widget="many2many_tags"
+                        attrs="{'invisible':[('related_linked_model', 'not in', ['service_info', 'tot_videos'])]}"/>
+                    <field name="related_type_ids"
+                           widget="many2many_tags"
+                        attrs="{'invisible':[('related_linked_model', 'not in', ['matriculation'])]}"/>
+                    <field name="description"/>
+
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="dms_file_inherit_search_view">
+        <field name="name">dms.file.inherit.search (in dms_still)</field>
+        <field name="model">dms.file</field>
+        <field name="inherit_id" ref="dms.search_dms_file"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="related_model_ids" />
+                <field name="related_brand_ids"/>
+                <field name="related_category_ids"/>
+                <field name="related_error_ids" />
+                <field name="related_query_ids" />
+                <field name="related_type_ids" />
+            </field>
+        </field>
+    </record>
+
+
+</odoo>

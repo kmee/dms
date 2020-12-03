@@ -1,0 +1,108 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* dms_still
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-03 16:31+0000\n"
+"PO-Revision-Date: 2020-12-03 13:41-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#. module: dms_still
+#: model:ir.model.fields,field_description:dms_still.field_dms_file__related_brand_ids
+msgid "Brands"
+msgstr "Marcas"
+
+#. module: dms_still
+#: model:ir.model.fields,field_description:dms_still.field_dms_file__description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: dms_still
+#: model:ir.model,name:dms_still.model_dms_directory
+msgid "Directory"
+msgstr "Directorio"
+
+#. module: dms_still
+#: model:ir.model.fields,field_description:dms_still.field_dms_file__related_error_ids
+msgid "Errors"
+msgstr "Alarmes"
+
+#. module: dms_still
+#: model:ir.model,name:dms_still.model_dms_file
+msgid "File"
+msgstr "Archivo"
+
+#. module: dms_still
+#: model:ir.model.fields,field_description:dms_still.field_dms_file__related_type_ids
+msgid "Homologation Type"
+msgstr "Tipo Homologado"
+
+#. module: dms_still
+#: model:ir.model.fields,field_description:dms_still.field_dms_directory__linked_model
+msgid "Linked Model"
+msgstr "Modelo vinculado"
+
+#. module: dms_still
+#: model:ir.model.fields,field_description:dms_still.field_dms_file__related_linked_model
+msgid "Linked_model"
+msgstr "Modelo vinculado"
+
+#. module: dms_still
+#: model:ir.model.fields.selection,name:dms_still.selection__dms_directory__linked_model__matriculation
+msgid "Matriculation"
+msgstr "Matriculación"
+
+#. module: dms_still
+#: model:ir.model.fields,field_description:dms_still.field_dms_file__related_category_ids
+msgid "Model Categories"
+msgstr "Categorías de Modelos"
+
+#. module: dms_still
+#: model:ir.model.fields,field_description:dms_still.field_dms_file__related_model_ids
+msgid "Models"
+msgstr "Modelos"
+
+#. module: dms_still
+#: model:ir.model.fields.selection,name:dms_still.selection__dms_directory__linked_model__normative
+msgid "Normative"
+msgstr "Normativas"
+
+#. module: dms_still
+#: model:ir.model.fields.selection,name:dms_still.selection__dms_directory__linked_model__procedures
+msgid "Procedures"
+msgstr "Procedimientos"
+
+#. module: dms_still
+#: model:ir.model.fields,field_description:dms_still.field_dms_file__related_query_ids
+msgid "Querys"
+msgstr "Síntomas"
+
+#. module: dms_still
+#: model:ir.model.fields.selection,name:dms_still.selection__dms_directory__linked_model__service_info
+msgid "Service Information"
+msgstr "Info de Serviço"
+
+#. module: dms_still
+#: model:ir.model.fields.selection,name:dms_still.selection__dms_directory__linked_model__tot_videos
+msgid "TOT Videos"
+msgstr "TOT Videos"
+
+#. module: dms_still
+#: model:ir.model.fields.selection,name:dms_still.selection__dms_directory__linked_model__technical_doc
+msgid "Technical Documentation"
+msgstr "Documentación Técnica"
+
+#. module: dms_still
+#: model:ir.model.fields.selection,name:dms_still.selection__dms_directory__linked_model__technical_analysis
+msgid "Technical analysis"
+msgstr "Análisis Técnicas"

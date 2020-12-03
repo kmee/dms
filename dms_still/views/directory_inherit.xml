@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 KMEE
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="directory_inherit_form_view">
+        <field name="name">directory.inherit.form (in dms_still)</field>
+        <field name="model">dms.directory</field>
+        <field name="inherit_id" ref="dms.view_dms_directory_form"/>
+        <field name="arch" type="xml">
+            <field name="tag_ids" position="after">
+                <field name="linked_model"/>
+<!--                <field name="parent_linked_model"/>-->
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="directory_inherit_search_view">
+        <field name="name">directory.inherit.search (in dms_still)</field>
+        <field name="model">dms.directory</field>
+        <field name="inherit_id" ref="dms.search_dms_directory"/>
+        <field name="arch" type="xml">
+            <field name="complete_name" position="after">
+                <field name="linked_model" filter_domain="[('name','ilike',self)]"/>
+            </field>
+        </field>
+    </record>
+
+
+</odoo>
